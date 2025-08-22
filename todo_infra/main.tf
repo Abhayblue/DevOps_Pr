@@ -7,7 +7,7 @@
 
 module "virtual_network" {
 
-  depends_on      = [module.ResourceGroup]
+  # depends_on      = [module.ResourceGroup]
   source          = "../Modules/azurerm_virtual_network"
   virtual_network = var.vnet
 
@@ -32,7 +32,7 @@ module "public_ip" {
 
 module "sql_server" {
 
-  depends_on = [module.ResourceGroup, module.virtual_network]
+  depends_on = [module.virtual_network]
   source     = "../Modules/azurerm_SQL_server"
   sql_server = var.server
 
