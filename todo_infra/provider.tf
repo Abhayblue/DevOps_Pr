@@ -5,6 +5,14 @@ terraform {
       version = "4.39.0"
     }
   }
+  
+    backend "azurerm" {
+    resource_group_name   = "todo_rg"     # RG jisme storage hai
+    storage_account_name  = "backendstoragecicd"      # Storage account ka naam (unique hona chahiye)
+    container_name        = "tfstate"                  # Blob container jisme state rakha jayega
+    key                   = "terraform.tfstate"        # State file ka naam
+  }
+
 }
 
 provider "azurerm" {
